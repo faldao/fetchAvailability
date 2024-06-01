@@ -1,0 +1,10 @@
+{
+  "IsEncrypted": false,
+  "Values": {
+    "FUNCTIONS_WORKER_RUNTIME": "node",
+    "AzureWebJobsFeatureFlags": "EnableWorkerIndexing",
+    "AzureWebJobsStorage": "UseDevelopmentStorage=true",
+    "WUBOOK_API_KEY": "wb_9572f852-b76b-11ec-a538-001a4ae7b219",
+    "PORT": "3000"
+  }
+}
