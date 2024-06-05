@@ -3,7 +3,7 @@
     "entryPoint": "default",
   "bindings": [
     {
-      "authLevel": "admin",
+      "authLevel": "function",
       "type": "httpTrigger",
       "direction": "in",
       "name": "req",
