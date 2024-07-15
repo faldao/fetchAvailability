@@ -1,0 +1,12 @@
+# Node modules  
+node_modules/  
+
+# Build directoy  
+dist/  
+
+# Logs  
+logs/  
+*.log  
+
+# Temporary files  
+temp/  
