@@ -59,7 +59,12 @@ async function login(context, req) {
         if (user) {  
             context.log('User found:', user.user_id);  
             context.res = {  
-                body: { success: true, userId: user.user_id }  
+                body: {   
+                    success: true,   
+                    userId: user.user_id,  
+                    firstName: user.first_name,  
+                    lastName: user.last_name  
+                }  
             };  
         } else {  
             context.log('Invalid username or password');  
@@ -75,7 +80,7 @@ async function login(context, req) {
             body: { success: false, message: 'Internal server error' }  
         };  
     }  
-}  
+} 
 
 async function properties(context, req) {  
     context.log('Properties function called');  
