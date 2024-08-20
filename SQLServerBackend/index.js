@@ -50,6 +50,25 @@ Apartment.belongsTo(Property, { foreignKey: 'property_id' });
 User.belongsToMany(Apartment, { through: UserApartment, foreignKey: 'user_id' });  
 Apartment.belongsToMany(User, { through: UserApartment, foreignKey: 'apartment_id' });  
 
+async function warmUp(context) {  
+    context.log('Warm-up function called');  
+
+    try {  
+        // Realizamos una consulta ligera para calentar la conexión  
+        await sequelize.query('SELECT 1');  
+        context.res = {  
+            status: 200,  
+            body: { success: true, message: 'Database connection warmed up' }  
+        };  
+    } catch (error) {  
+        context.log('Warm-up error:', error);  
+        context.res = {  
+            status: 500,  
+            body: { success: false, message: 'Internal server error' }  
+        };  
+    }  
+}
+
 async function login(context, req) {  
     context.log('Login function called');  
     const { username, password } = req.body || {};  
@@ -148,6 +167,8 @@ export default async function (context, req) {
         await properties(context, req);  
     } else if (method === 'get' && action === 'apartments') {  
         await apartments(context, req);  
+    } else if (method === 'get' && action === 'warmup') {  
+        await warmUp(context);  
     } else {  
         context.log('Route not found');  
         context.res = {  
