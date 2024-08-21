@@ -55,7 +55,7 @@ async function warmUp(context) {
 
     try {  
         // Realizamos una consulta ligera para calentar la conexión  
-        await sequelize.query('SELECT 1');  
+        await sequelize.query('SELECT TOP 1 user_id FROM users');  
         context.res = {  
             status: 200,  
             body: { success: true, message: 'Database connection warmed up' }  
